@@ -70,4 +70,27 @@ public class Doctor extends Person {
         this.description = description;
     }
 
+    public void displayInformation() {
+        System.out.println("Doctor General Information");
+        System.out.println("1. PatientID: " + getDoctorID() +
+                "2. Name: " + getFirstname() + " " + getLastname() +
+                "3. Sex: " + getSex() + "\n" +
+                "4. Age: " + calculateAge() + "\n" +
+                "5. Address: " + getLastname() + "\n" +
+                "6. Phone Number: " + getPhoneNumber() + "\n" +
+                "7. Emergency Number: " + getLastname() + "\n" +
+                "8. Email: " + getEmail() + "\n");
+
+        System.out.println("Doctor Specialize Information");
+        System.out.println("1. PatientID: " + getDoctorID() +
+                "2. Name: " + getFirstname() + " " + getLastname() +
+                "3. Sex: " + getSex() + "\n" +
+                "4. Age: " + calculateAge() + "\n" +
+                "5. Address: " + getLastname() + "\n" +
+                "6. Phone Number: " + getPhoneNumber() + "\n" +
+                "7. Emergency Number: " + getLastname() + "\n" +
+                "8. Email: " + getEmail() + "\n");
+
+    }
+
 }

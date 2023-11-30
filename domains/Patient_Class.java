@@ -40,9 +40,16 @@ public class Patient extends Person {
     }
 
     @Override
-    public String toString() {
-        return "Patient [patientID=" + patientID + ", emer_call=" + emer_call + ", last_visited=" + last_visited
-                + "]";
+    public void displayInformation() {
+        System.out.println("Patient Information");
+        System.out.println("1. PatientID: " + getPatientID() +
+                "2. Name: " + getFirstname() + " " + getLastname() +
+                "3. Sex: " + getSex() + "\n" +
+                "4. Age: " + calculateAge() + "\n" +
+                "5. Address: " + getLastname() + "\n" +
+                "6. Phone Number: " + getPhoneNumber() + "\n" +
+                "7. Emergency Number: " + getEmer_call() + "\n" +
+                "8. Last Visited: " + getLast_visited() + "\n");
     }
 
 }
