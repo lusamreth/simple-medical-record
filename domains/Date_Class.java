@@ -3,7 +3,7 @@ package Medical_Record;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Date {
+public class MedicalDate {
     private int day;
     private int month;
     private int year;
