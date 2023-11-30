@@ -13,8 +13,8 @@ time and introduces error risks. The dependence on memory for recalling patient 
 oversight in care delivery. Addressing these issues requires a comprehensive solution to enhance patient access, secure
 data exchange, and streamline record-keeping for improved healthcare quality. The object of this project is:
 
-1. Implementation of Electronic Health Records (EHR): Transitioning from paper-based records to a secure and centralized EHR system
-will facilitate efficient patient information storage, retrieval, and exchange. This digital format minimizes the risk of
+1. Implementation of Electronic Health Records (EHR): Transitioning from paper-based records to a secure and centralized
+EHR system will facilitate efficient patient information storage, retrieval, and exchange. This digital format minimizes the risk of
 data loss, enhances accuracy, and ensures the integrity of health records.
 
 2. Patient Portals for Enhanced Access: Introducing user-friendly patient portals connected to the EHR system will empower
