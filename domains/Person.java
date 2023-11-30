@@ -11,16 +11,17 @@ public abstract class Person {
     private Date dateofbirth;
     private Address address;
     private String[] phoneNumber;
+    private String password;
 
     public Person(String firstname, String lastname, String sex, Date dateofbirth, String[] phoneNumber,
-            Address address) {
+            Address address, String password) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.sex = sex;
         this.dateofbirth = dateofbirth;
         this.phoneNumber = phoneNumber;
         this.address = address;
-
+        this.password = password;
     }
 
     public void setFullName(String fullname) {
