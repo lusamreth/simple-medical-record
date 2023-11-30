@@ -46,6 +46,6 @@ public class Address {
     }
 
     public String toString() {
-        return this.getStreet() + ", " + this.getVillage() + ", " + this.getDistrict() + ", " this.getProvince();
+        return this.getStreet() + ", " + this.getVillage() + ", " + this.getDistrict() + ", " + this.getProvince();
     }
 }
