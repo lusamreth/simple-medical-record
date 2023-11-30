@@ -1,5 +1,7 @@
 package Medical_Record.MedicalRecordEntity;
 
+import Medical_Record.MedicalRecordEntity.Intake;
+
 public class Prescription {
     private String perID;
     private String medName;
