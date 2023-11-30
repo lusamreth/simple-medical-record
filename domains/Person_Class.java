@@ -1,9 +1,9 @@
 package Medical_Record;
 
-import java.util.Arrays;
+import java.lang.String;
 import java.util.Date;
 
-public class Person {
+public abstract class Person {
     private String fullname;
     private String firstname;
     private String lastname;
@@ -74,14 +74,10 @@ public class Person {
     }
 
     public int calculateAge() {
-        return Date.calculateAge(dateofbirth, new Date());
+        return Date_Class.calculateAge(dateofbirth, new Date());
     }
 
-    @Override
-    public String toString() {
-        return "Person [fullname=" + fullname + ", firstname=" + firstname + ", lastname=" + lastname + ", sex="
-                + sex + ", dateofbirth=" + dateofbirth + ", address=" + address + ", phoneNumber="
-                + Arrays.toString(phoneNumber) + "]";
-    }
+    // @Override
+    public abstract void displayInformation();
 
 }
