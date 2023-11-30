@@ -9,7 +9,7 @@ public class MedicalDate {
     private int year;
     private static int age;
 
-    public Date(int day, int month, int year) {
+    public MedicalDate(int day, int month, int year) {
         this.day = day;
         this.month = month;
         this.year = year;

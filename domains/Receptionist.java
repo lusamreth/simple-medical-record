@@ -20,8 +20,17 @@ public class Receptionist extends Person {
     }
 
     @Override
-    public String toString() {
-        return "Receptionist [receptionistID=" + receptionistID + "]";
-    }
+    public void displayInformation() {
+        System.out.println("Receptionist Information");
+        System.out.println("1. ReceptionistID: " + getReceptionistID() +
+                "2. Name: " + getFirstname() + " " + getLastname() +
+                "3. Sex: " + getSex() + "\n" +
+                "4. Age: " + calculateAge() + "\n" +
+                "5. Address: " + getAddress() + "\n" +
+                "6. Phone Number: " + displayPhoneNumber() + "\n" +
+    // @Override
+    // public String toString() {
+    // return "Receptionist [receptionistID=" + receptionistID + "]";
+    // }
 
 }

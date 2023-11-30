@@ -45,4 +45,7 @@ public class Address {
         this.province = province;
     }
 
+    public String toString() {
+        return this.getStreet() + ", " + this.getVillage() + ", " + this.getDistrict() + ", " this.getProvince();
+    }
 }

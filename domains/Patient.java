@@ -1,5 +1,7 @@
 package Medical_Record;
 
+import Medical_Record.Person_Class.Person;
+import person.Person;
 import java.util.Date;
 
 public class Patient extends Person {
@@ -42,8 +44,8 @@ public class Patient extends Person {
     @Override
     public void displayInformation() {
         System.out.println("Patient Information");
-        System.out.println("1. PatientID: " + getPatientID() +
-                "2. Name: " + getFirstname() + " " + getLastname() +
+        System.out.println("1. PatientID: " + this.getPatientID() +
+                "2. Name: " + this.getFirstname() + " " + this.getLastname() +
                 "3. Sex: " + getSex() + "\n" +
                 "4. Age: " + calculateAge() + "\n" +
                 "5. Address: " + getLastname() + "\n" +

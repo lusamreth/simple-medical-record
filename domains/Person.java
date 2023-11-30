@@ -74,7 +74,15 @@ public abstract class Person {
     }
 
     public int calculateAge() {
-        return Date_Class.calculateAge(dateofbirth, new Date());
+        return MedicalDate.calculateAge(dateofbirth, new Date());
+    }
+
+    public void displayPhoneNumber() {
+        String formattedPhoneNumber = String.join(", ", phoneNumber);
+        // for (int i = 0; i < phoneNumber.length; i++) {
+        // System.out.print(phoneNumber[i] + " ");
+        // }
+        return formattedPhoneNumber;
     }
 
     // @Override
