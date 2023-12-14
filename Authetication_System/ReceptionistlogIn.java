@@ -9,7 +9,7 @@ public class ReceptionistlogIn {
     static ArrayList<Receptionist> recepList = new ArrayList<Receptionist>();
 
     public static void getUserList() {
-        String filePath = "D://Java_Folder//CamTech//User//Database//receptionistInfor.txt";
+        String filePath = "Authetication\\Database\\receptionistInfor.txt";
 
         try {
             // Create a FileReader
@@ -24,8 +24,8 @@ public class ReceptionistlogIn {
                 String[] parts = line.split("/");
 
                 // Check if the array has the expected length before accessing its elements
-                if (parts.length == 2) {
-                    Receptionist tmp = new Receptionist(parts[0], parts[1]);
+                if (parts.length == 4) {
+                    Receptionist tmp = new Receptionist(parts[0], parts[1], parts[2], parts[3]);
                     recepList.add(tmp);
                 } else {
                     // Handle the case where the line doesn't have the expected format
@@ -48,7 +48,7 @@ public class ReceptionistlogIn {
         boolean exist = false;
         for (Receptionist i : recepList) {
             // System.out.println(i.getName());
-            if (i.getName().equals(name)) {
+            if (i.getUsername().equals(name)) {
                 exist = true;
             }
 

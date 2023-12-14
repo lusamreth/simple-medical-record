@@ -1,20 +1,21 @@
 package Authetication_System;
 
-public class Receptionist {
-    private String name;
-    private String password;
+public class Receptionist extends Person {
+    private String email;
+    private String PhoneNumber;
 
-    public Receptionist(String name, String password) {
-        this.name = name;
-        this.password = password;
+    public Receptionist(String name, String password, String email, String phoneNumber) {
+        super(name, password);
+        this.email = email;
+        PhoneNumber = phoneNumber;
     }
 
-    public String getName() {
-        return name;
+    public String getEmail() {
+        return email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPhoneNumber() {
+        return PhoneNumber;
     }
 
     @Override

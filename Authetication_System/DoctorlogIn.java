@@ -9,7 +9,7 @@ public class DoctorlogIn {
     static ArrayList<Doctor> docList = new ArrayList<Doctor>();
 
     public static void getUserList() {
-        String filePath = "D://Java_Folder//CamTech//User//Database//patientInfo.txt";
+        String filePath = "Authetication\\Database\\doctorInfo.txt";
 
         try {
             // Create a FileReader
@@ -24,8 +24,8 @@ public class DoctorlogIn {
                 String[] parts = line.split("/");
 
                 // Check if the array has the expected length before accessing its elements
-                if (parts.length == 2) {
-                    Doctor tmp = new Doctor(parts[0], parts[1]);
+                if (parts.length == 5) {
+                    Doctor tmp = new Doctor(parts[0], parts[1], parts[2], parts[3], parts[4]);
                     docList.add(tmp);
                 } else {
                     // Handle the case where the line doesn't have the expected format
@@ -48,7 +48,7 @@ public class DoctorlogIn {
         boolean exist = false;
         for (Doctor i : docList) {
             // System.out.println(i.getName());
-            if (i.getName().equals(name)) {
+            if (i.getUsername().equals(name)) {
                 exist = true;
             }
 

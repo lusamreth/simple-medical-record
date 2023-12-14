@@ -1,19 +1,17 @@
 package Authetication_System;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Scanner;
+import java.io.*;
 
 public class Register {
     // Patient Register
-    public static void registerPatient(String tmpName, String tmpPassword) {
+    public static void registerPatient(String tmpName, String tmpPassword, String tmpCall, String phone_call) {
         Scanner sc = new Scanner(System.in);
-        String filePath = "D://Java_Folder//CamTech//User//Database//patientInfo.txt";
+        String filePath = "Authetication\\Database\\patientInfo.txt";
 
-        String WritingContent = tmpName + "/" + tmpPassword;
+        String WritingContent = tmpName + "/" + tmpPassword + "/" + tmpCall + "/" + phone_call;
 
-        Patient user1 = new Patient(tmpName, tmpPassword);
+        Patient user1 = new Patient(tmpName, tmpPassword, tmpCall, phone_call);
         System.out.println(user1);
 
         try {
@@ -40,13 +38,14 @@ public class Register {
     }
 
     // Doctor Register
-    public static void registerDoctor(String tmpName, String tmpPassword) {
+    public static void registerDoctor(String tmpName, String tmpPassword, String email, String tmpPhone,
+            String description) {
         Scanner sc = new Scanner(System.in);
-        String filePath = "D://Java_Folder//CamTech//User//Database//doctorInfo.txt";
+        String filePath = "Authetication\\Database\\doctorInfo.txt";
 
-        String WritingContent = tmpName + "/" + tmpPassword;
+        String WritingContent = tmpName + "/" + tmpPassword + "/" + email + "/" + tmpPhone + "/" + description;
 
-        Doctor user1 = new Doctor(tmpName, tmpPassword);
+        Doctor user1 = new Doctor(tmpName, tmpPassword, email, tmpPhone, description);
         System.out.println(user1);
 
         try {
@@ -73,13 +72,13 @@ public class Register {
     }
 
     // Receptionist Register
-    public static void registerReceptionist(String tmpName, String tmpPassword) {
+    public static void registerReceptionist(String tmpName, String tmpPassword, String email, String tmpPhone) {
         Scanner sc = new Scanner(System.in);
-        String filePath = "D://Java_Folder//CamTech//User//Database//receptionistInfor.txt";
+        String filePath = "Authetication\\Database\\receptionistInfor.txt";
 
-        String WritingContent = tmpName + "/" + tmpPassword;
+        String WritingContent = tmpName + "/" + tmpPassword + "/" + email + "/" + tmpPhone;
 
-        Receptionist user1 = new Receptionist(tmpName, tmpPassword);
+        Receptionist user1 = new Receptionist(tmpName, tmpPassword, email, tmpPhone);
         System.out.println(user1);
 
         try {
@@ -104,5 +103,49 @@ public class Register {
 
         sc.close();
     }
+
+    // // Update Credential
+    // public static void updateCredentials(String newUsername, String newPassword)
+    // {
+    // try {
+    // // Read the file
+    // String filePath =
+    // "D://Java_Folder//CamTech//User//Database//receptionistInfor.txt";
+    // BufferedReader br = new BufferedReader(new FileReader(filePath));
+    // ArrayList<String> lines = new ArrayList<>();
+    // String line;
+
+    // while ((line = br.readLine()) != null) {
+    // // Identify and modify lines with credentials
+    // if (line.startsWith("Username: ")) {
+    // line = "Username: " + newUsername;
+    // } else if (line.startsWith("Password: ")) {
+    // line = "Password: " + newPassword;
+    // }
+
+    // // Add the line to the list
+    // lines.add(line);
+    // }
+
+    // // Close the reader
+    // br.close();
+
+    // // Write the modified data back to the file
+    // BufferedWriter bw = new BufferedWriter(new FileWriter(filePath));
+
+    // for (String modifiedLine : lines) {
+    // bw.write(modifiedLine);
+    // bw.newLine();
+    // }
+
+    // // Close the writer
+    // bw.close();
+
+    // System.out.println("Username and password updated successfully.");
+
+    // } catch (IOException e) {
+    // e.printStackTrace();
+    // }
+    // }
 
 }
