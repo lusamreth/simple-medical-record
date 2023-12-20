@@ -1,4 +1,4 @@
-package Authetication_System;
+package Authetication;
 
 public class Person {
     protected String name;

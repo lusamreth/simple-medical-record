@@ -1,4 +1,4 @@
-package Authetication_System;
+package Authetication;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

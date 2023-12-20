@@ -1,4 +1,4 @@
-package Authetication_System;
+package Authetication;
 
 public class Receptionist extends Person {
     private String email;
@@ -20,9 +20,11 @@ public class Receptionist extends Person {
 
     @Override
     public String toString() {
-        String tmp = "Receptionist is created \n"
+        String tmp = "----------------\n\n" + "Receptionist is created \n"
                 + "The name is: " + this.name
-                + "\nThe password is: " + this.password;
+                + "\nThe password is: " + this.password
+                + "\n The Email is: " + this.email
+                + "\n The Phone Number: " + this.PhoneNumber;
 
         return tmp;
     }

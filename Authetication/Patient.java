@@ -1,4 +1,4 @@
-package Authetication_System;
+package Authetication;
 
 public class Patient extends Person {
     private String emer_call;
@@ -20,7 +20,7 @@ public class Patient extends Person {
 
     @Override
     public String toString() {
-        String tmp = "Patient is created \n"
+        String tmp = "----------------\n\n" + "Patient is created \n"
                 + "The name is: " + this.name
                 + "\nThe password is: " + this.password
                 + "\nThe Emergency PhoneNumber is: " + this.emer_call

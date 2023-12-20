@@ -1,4 +1,4 @@
-package Authetication_System;
+package Authetication;
 
 public class Doctor extends Person {
     private String email;
@@ -26,9 +26,12 @@ public class Doctor extends Person {
 
     @Override
     public String toString() {
-        String tmp = "Doctor is created \n"
+        String tmp = "----------------\n\n" + "Doctor is created \n"
                 + "The name is: " + this.name
-                + "\nThe password is: " + this.password;
+                + "\nThe password is: " + this.password
+                + "\nThe email is: " + this.email
+                + "\nThe phone number is: " + this.phoneNumber
+                + "\nThe description is: " + this.description;
 
         return tmp;
     }

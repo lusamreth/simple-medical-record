@@ -11,7 +11,7 @@
  * ..........DONE.........
  */
 
-package Authetication_System;
+package Authetication;
 
 import java.util.Scanner;
 
@@ -117,7 +117,7 @@ public class Authenticate {
                             System.out.print("New Username: ");
                             newPassword = sc.nextLine();
 
-                            NewInfo.UpdateInfo(tmpName, tmpPassword, newName, newPassword);
+                            NewInfo.patientInfo(tmpName, tmpPassword, newName, newPassword);
 
                         } else {
                             System.out.println("Thank you");
@@ -132,6 +132,21 @@ public class Authenticate {
                         tmpPassword = sc.nextLine();
                         Doctor doctor = new Doctor(tmpName, tmpPassword, null, null, null);
                         DoctorlogIn.loginUser(doctor);
+
+                        // Update information
+                        System.out.print("Do you want to update your information or not? (Y or N)");
+                        answer = sc.nextLine();
+                        if (answer.equals("Y")) {
+                            System.out.print("New Username: ");
+                            newName = sc.nextLine();
+                            System.out.print("New Username: ");
+                            newPassword = sc.nextLine();
+
+                            NewInfo.doctorInfo(tmpName, tmpPassword, newName, newPassword);
+
+                        } else {
+                            System.out.println("Thank you");
+                        }
                         break;
 
                     // login to receptionist Account
@@ -142,6 +157,21 @@ public class Authenticate {
                         tmpPassword = sc.nextLine();
                         Receptionist receptionist = new Receptionist(tmpName, tmpPassword, null, null);
                         ReceptionistlogIn.loginRecep(receptionist);
+
+                        // Update information
+                        System.out.print("Do you want to update your information or not? (Y or N)");
+                        answer = sc.nextLine();
+                        if (answer.equals("Y")) {
+                            System.out.print("New Username: ");
+                            newName = sc.nextLine();
+                            System.out.print("New Username: ");
+                            newPassword = sc.nextLine();
+
+                            NewInfo.recepInfo(tmpName, tmpPassword, newName, newPassword);
+
+                        } else {
+                            System.out.println("Thank you");
+                        }
                         break;
 
                     default:

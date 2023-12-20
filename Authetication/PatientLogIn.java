@@ -1,15 +1,16 @@
-package Authetication_System;
+package Authetication;
 
+import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class DoctorlogIn {
-    static ArrayList<Doctor> docList = new ArrayList<Doctor>();
+public class PatientLogIn {
+
+    static ArrayList<Patient> userList = new ArrayList<Patient>();
 
     public static void getUserList() {
-        String filePath = "Authetication\\Database\\doctorInfo.txt";
+        String filePath = "Authetication\\Database\\patientInfo.txt";
 
         try {
             // Create a FileReader
@@ -24,9 +25,9 @@ public class DoctorlogIn {
                 String[] parts = line.split("/");
 
                 // Check if the array has the expected length before accessing its elements
-                if (parts.length == 5) {
-                    Doctor tmp = new Doctor(parts[0], parts[1], parts[2], parts[3], parts[4]);
-                    docList.add(tmp);
+                if (parts.length == 4) {
+                    Patient tmp = new Patient(parts[0], parts[1], parts[2], parts[3]);
+                    userList.add(tmp);
                 } else {
                     // Handle the case where the line doesn't have the expected format
                     System.err.println("Invalid line format: " + line);
@@ -46,7 +47,7 @@ public class DoctorlogIn {
         getUserList();
 
         boolean exist = false;
-        for (Doctor i : docList) {
+        for (Patient i : userList) {
             // System.out.println(i.getName());
             if (i.getUsername().equals(name)) {
                 exist = true;
@@ -55,19 +56,19 @@ public class DoctorlogIn {
         }
 
         if (exist == true) {
-            System.out.println("Doctor exist please pick different name");
+            System.out.println("Patient exist please pick different name");
             return true;
         }
 
         return false;
     }
 
-    public static void loginUser(Doctor loginUser) {
+    public static void loginUser(Patient loginUser) {
 
         getUserList();
 
         boolean exist = false;
-        for (Doctor i : docList) {
+        for (Patient i : userList) {
             if (i.equals(loginUser)) {
                 exist = true;
             }
@@ -75,9 +76,9 @@ public class DoctorlogIn {
         }
 
         if (exist == true) {
-            System.out.println("Doctor exist");
+            System.out.println("Patient exist");
         } else {
-            System.out.println("Doctor doesn't exist");
+            System.out.println("Patient doesn't exist");
         }
     }
 

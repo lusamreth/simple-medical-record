@@ -1,4 +1,4 @@
-package Authetication_System;
+package Authetication;
 
 import java.util.Scanner;
 import java.io.*;
