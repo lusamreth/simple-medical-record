@@ -7,11 +7,13 @@ public class PasswordField extends InputField {
 
     public PasswordField() {
         super("password");
+
         this.setFieldError(this.getFieldName() + " is invalid!");
     }
 
     public PasswordField(Integer minLen, Integer maxLen) {
         super("password");
+
         this.setFieldError(this.getFieldName() + " is invalid!");
         this.maxLen = maxLen;
         this.minLen = minLen;

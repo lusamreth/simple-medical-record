@@ -4,6 +4,7 @@ package simple.medical.record.validation;
 // interface Function {
 // void apply();
 // }
+
 public abstract class InputField {
     private String fieldValue;
     private String fieldName;
