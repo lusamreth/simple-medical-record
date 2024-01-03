@@ -1,14 +1,9 @@
 package simple.medical.record.domains.MedicalRecordEntity;
 
 import java.util.Date;
-// import simple.medical.record.domains.Patient;
-
-import simple.medical.record.domains.Address;
 import simple.medical.record.domains.Patient;
+import simple.medical.record.utils.UniqueIdGenerator;
 import simple.medical.record.domains.Doctor;
-// import domains.Date;
-// import domains.Doctor;
-// import domains.Patient;
 
 public class MedicalRecord {
     private String medID;
@@ -21,7 +16,7 @@ public class MedicalRecord {
 
     public MedicalRecord(String medID, Date dateofVisit, Prescription prescription,
             Diagnosis diagnosis, Patient patientID, Doctor docID, String description) {
-        this.medID = medID;
+        this.medID = UniqueIdGenerator.genId();
         this.dateofVisit = dateofVisit;
         this.prescription = prescription;
         this.diagnosis = diagnosis;
@@ -32,10 +27,6 @@ public class MedicalRecord {
 
     public String getMedID() {
         return medID;
-    }
-
-    public void setMedID(String medID) {
-        this.medID = medID;
     }
 
     public Date getDateofVisit() {

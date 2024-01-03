@@ -1,5 +1,7 @@
 package simple.medical.record.domains.MedicalRecordEntity;
 
+import simple.medical.record.utils.UniqueIdGenerator;
+
 public class Prescription {
     private String perID;
     private String medName;
@@ -8,7 +10,7 @@ public class Prescription {
     private Intake intakeInstruction;
 
     public Prescription(String perID, String medName, String dosageUnit, int dosage, Intake intakeInstruction) {
-        this.perID = perID;
+        this.perID = UniqueIdGenerator.genId();
         this.medName = medName;
         this.dosageUnit = dosageUnit;
         this.dosage = dosage;

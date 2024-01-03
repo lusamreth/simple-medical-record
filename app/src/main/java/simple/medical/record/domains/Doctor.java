@@ -36,6 +36,8 @@ public class Doctor extends PersonInterface {
 
         // Use class composition
         // anynomous inner class
+        // explain protected, public , private
+        //
         this.doctorID = doctorID;
         this.specialty = specialty;
         this.qualification = qualification;

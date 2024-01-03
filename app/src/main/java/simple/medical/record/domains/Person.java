@@ -3,7 +3,10 @@ package simple.medical.record.domains;
 import java.lang.String;
 import java.util.Date;
 
+import simple.medical.record.utils.UniqueIdGenerator;
+
 public class Person {
+    private String userId;
     private String fullname;
     private String firstname;
     private String lastname;
@@ -23,6 +26,7 @@ public class Person {
         this.lastname = lastname;
         this.fullname = firstname + " " + lastname;
         this.sex = sex;
+        this.userId = UniqueIdGenerator.genId();
         this.dateofbirth = dateofbirth;
         this.phoneNumber = phoneNumber;
         this.address = address;
@@ -30,8 +34,12 @@ public class Person {
 
     }
 
-    public String getFullName(String fullname) {
+    public String getFullName() {
         return this.fullname;
+    }
+
+    public String getUserId() {
+        return this.userId;
     }
 
     public void splitFullName(String fullName) {

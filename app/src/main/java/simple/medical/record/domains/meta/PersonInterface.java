@@ -4,3 +4,11 @@ public abstract class PersonInterface {
     // @Override
     public abstract void displayInformation();
 }
+
+// class Doctor extends PersonInterface {
+// @Override
+// public void displayInformation(){
+
+// }
+
+// }

@@ -1,5 +1,7 @@
 package simple.medical.record.domains.MedicalRecordEntity;
 
+import simple.medical.record.utils.UniqueIdGenerator;
+
 public class Diagnosis {
     private String diagID;
     private String diagName;
@@ -7,7 +9,7 @@ public class Diagnosis {
     private String remark;
 
     public Diagnosis(String diagID, String diagName, String symptom, String remark) {
-        this.diagID = diagID;
+        this.diagID = UniqueIdGenerator.genId();
         this.diagName = diagName;
         this.symptom = symptom;
         this.remark = remark;
