@@ -34,7 +34,7 @@ cwand test results, fostering informed decision-making and active patient partic
 # The Detail of Each Class(Report)
 **Directory: [Domain/MedicalRecordEntity](app/src/main/java/simple/medical/record/domains)**
 
-1. _[Diagnosis Class](app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/Diagnosis.java)_: 
+1. _[Diagnosis Class](https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/Diagnosis.java)_: 
     Attributes:
         - Private diagID: This is a unique identifier generated for each instance of the Diagnosis class. It ensures that each diagnosis has a distinct identifier.	
             + Usage: The diagID is generated using UniqueIdGenerator.genId() in the constructor, and the generated value is assigned to this private field.
