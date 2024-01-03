@@ -28,3 +28,4 @@ cwand test results, fostering informed decision-making and active patient partic
 2. Create Patient Account
 3. Create Medical Record
 4. Generate Report
+
