@@ -1,27 +1,61 @@
 package simple.medical.record.repository;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File; // Import the File class
+import java.io.FileInputStream;
 import java.io.FileNotFoundException; // Import this class to handle errors
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.FileWriter;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner; // Import the Scanner class to read text files
+import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 import java.util.ArrayList; // Needed for ArrayList class
+import java.util.Collections;
+import java.util.Dictionary;
+import java.util.Map;
+import java.util.List;
 
-// custom file reader object
-public class FileRepo {
-    private String fileName;
+import com.alibaba.fastjson.JSON;
+import com.opencsv.*;
+import org.apache.commons.io.IOUtils;
 
-    // tag error if there exception
-    public boolean hasException = false;
-    // we know first hand that both list contains 200 names each
-    private ArrayList<String> loadedContent = new ArrayList<String>();
+// import java.io.IO.IOUtils;
+interface RepoFileReader {
+    public String readContent();
 
-    // constructor
-    public FileRepo(String filename) {
-        this.fileName = filename;
+    public String writeContent(String content);
+}
+
+abstract public class FileRepo {
+    protected String dataEntryPoint;
+    protected String fullRepoPath;
+    protected boolean hasException = false;
+
+    private File fileObject;
+
+    public void init(String repoPath, String dataEntryPoint) {
+        this.dataEntryPoint = dataEntryPoint;
+        this.fullRepoPath = repoPath + dataEntryPoint;
+        this.fileObject = new File(this.fullRepoPath);
+    }
+
+    public FileRepo(String repoPath, String dataEntryPoint) {
+        this.init(repoPath, dataEntryPoint);
+    }
+
+    public FileRepo() {
+        String DEFAULT_DIR = System.getProperty("user.dir");
+        System.out.println("USING DEFAULT REPO DIR " + DEFAULT_DIR);
+
+        this.dataEntryPoint = "db.json";
+        this.fullRepoPath = DEFAULT_DIR + dataEntryPoint;
+        this.fileObject = new File(this.fullRepoPath);
+        this.init(DEFAULT_DIR, "db.json");
     }
 
     // mutator to identify error
@@ -34,93 +68,47 @@ public class FileRepo {
         return this.hasException;
     }
 
-    public void appendToFile(String[] content) throws IOException {
+    protected synchronized String readFullContent() throws IOException {
+        // File file = new File(this.fullRepoPath);
 
-        FileWriter fileWriter = new FileWriter(fileName);
-        BufferedWriter writer = new BufferedWriter(fileWriter);
-
-        for (int i = 0; i < content.length; i++) {
-            String contentLine = content[i];
-            writer.write(contentLine);
+        System.out.println("reading full content...");
+        if (!this.fileObject.exists()) {
+            this.flagError();
+            System.out.println("File is not found.");
+            System.out.println("Location : " + fullRepoPath);
+            return "";
         }
 
-        writer.close();
+        // FileReader fReader = new FileReader(file);
+        // BufferedReader bufReader = new BufferedReader(new FileReader(file));
+
+        InputStream inputStream = new FileInputStream(this.fileObject);
+
+        String fullContent = IOUtils.toString(inputStream, "utf8");
+        String s = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+        notify();
+        return fullContent;
     }
 
-    public void writeCSVFile(String[] content) throws IOException {
+    protected boolean writeFullContent(String content) throws IOException {
 
-        FileWriter fileWriter = new FileWriter(fileName);
-        BufferedWriter writer = new BufferedWriter(fileWriter);
-
-        String csvOutputFile = this.convertToCSV(content);
-        writer.write(csvOutputFile);
-        writer.close();
-    }
-
-    // method for reading and loading each line into array list
-    public ArrayList<String> read() {
-        // file object
-        File reader = new File(this.fileName);
-        try {
-            // pass the file object into scanner for reading
-            Scanner myReader = new Scanner(reader);
-
-            // keep reading the file until there is no more line
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-
-                // load all the line into ArrayList for later use
-                this.loadedContent.add(data);
+        File file = new File(fullRepoPath);
+        if (!file.exists()) {
+            boolean isCreated = file.createNewFile();
+            if (!isCreated) {
+                // throw new Exception("File creation failed");
+                System.out.println("File creation failed");
+                return false;
             }
-
-            myReader.close();
-            // add exception in case we found empty path
-        } catch (FileNotFoundException e) {
-
-            this.flagError();
-
-            // custom err handling
-            System.out.println("Encounter Incorrect File Path!");
-
-        } catch (Exception e) {
-
-            this.flagError();
-            // unkown exception handling
-            System.out.print("Encounter Unknown Exception...");
-            System.out.println(e.toString());
-
         }
-
-        //
-        return this.loadedContent;
+        FileWriter writer = new FileWriter(this.fullRepoPath);
+        writer.write(content);
+        writer.close();
+        return true;
     }
 
-    public String escapeSpecialCharacters(String data) {
-        if (data == null) {
-            throw new IllegalArgumentException("Input data cannot be null");
-        }
-        String escapedData = data.replaceAll("\\R", " ");
-        if (data.contains(",") || data.contains("\"") || data.contains("'")) {
-            data = data.replace("\"", "\"\"");
-            escapedData = "\"" + data + "\"";
-        }
-        return escapedData;
-    }
+    // abstract public int handlingFileError(String errorMsg);
 
-    public String convertToCSV(String[] data) {
-        return Stream.of(data)
-                .map(this::escapeSpecialCharacters)
-                .collect(Collectors.joining(","));
-    }
-
-    public String[] fromArrayListToStringList(ArrayList<String> data) {
-
-        String[] str = new String[data.size()];
-
-        for (int i = 0; i < data.size(); i++) {
-            str[i] = data.get(i);
-        }
-        return str;
-    }
+    // abstract public void handlingError(String errorMsg, String stackTrace);
 
 }
