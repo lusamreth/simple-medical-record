@@ -1,5 +1,8 @@
 package simple.medical.record.validation;
 
+import simple.medical.record.utils.Cypher;
+import simple.medical.record.utils.PasswordCypher;
+
 public class PasswordField extends InputField {
     private String SpecialCases = "@#$%^&+=";
     private Integer minLen = 8;
@@ -11,19 +14,15 @@ public class PasswordField extends InputField {
         this.setFieldError(this.getFieldName() + " is invalid!");
     }
 
-    public PasswordField(Integer minLen, Integer maxLen) {
-        super("password");
-
+    public PasswordField(String passname) {
+        super(passname);
         this.setFieldError(this.getFieldName() + " is invalid!");
-        this.maxLen = maxLen;
-        this.minLen = minLen;
     }
 
     @Override
     public boolean Validator() {
         boolean isValid = false;
         String inputValue = this.getValue();
-
         if (inputValue.length() < minLen) {
             this.setFieldError("Password must not be below" + minLen + " characters!");
             return false;
