@@ -48,6 +48,15 @@ abstract public class FileRepo {
         this.init(repoPath, dataEntryPoint);
     }
 
+    public FileRepo(String dataEntryPoint) {
+        String DEFAULT_DIR = System.getProperty("user.dir");
+        // this.init(repoPath, dataEntryPoint);
+        this.dataEntryPoint = dataEntryPoint;
+        this.fullRepoPath = DEFAULT_DIR + dataEntryPoint;
+        this.fileObject = new File(this.fullRepoPath);
+        this.init(DEFAULT_DIR, dataEntryPoint);
+    }
+
     public FileRepo() {
         String DEFAULT_DIR = System.getProperty("user.dir");
         System.out.println("USING DEFAULT REPO DIR " + DEFAULT_DIR);

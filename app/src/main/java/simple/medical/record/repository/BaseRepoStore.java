@@ -8,27 +8,27 @@ import java.lang.reflect.Field;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Optional;
 
 import java.util.ArrayList;
 
-import simple.medical.record.domains.Person;
-
-public class PersonRepo extends BaseRepository<Person> {
+public class BaseRepoStore<Generic> extends BaseRepository<Generic> {
     private FileRepoJson fileRepo;
-
     private Hashtable<String, Object> memoryData = new Hashtable<String, Object>();
-    private List<Person> personList;
+    private List<Generic> genericList;
+    private String fieldname;
 
-    public PersonRepo(String repoFileName) {
+    public BaseRepoStore(String fieldname) {
         super();
-        this.fileRepo = new FileRepoJson("person");
+        this.fieldname = fieldname;
+        this.fileRepo = new FileRepoJson(fieldname);
     }
 
     public Optional<Map<String, Object>> get(String entityId) {
-        List<Object> personList = this.listGeneric();
+        List<Object> genericList = this.listGeneric();
 
-        for (Object item : personList) {
+        for (Object item : genericList) {
             Map<String, Object> casted = (Map<String, Object>) (item);
             System.out.println(casted);
             if (casted.get("userId").toString().equalsIgnoreCase(entityId)) {
@@ -40,9 +40,9 @@ public class PersonRepo extends BaseRepository<Person> {
     }
 
     public Optional<Map<String, Object>> getWithFullName(String firstName, String lastName) {
-        List<Object> personList = this.listGeneric();
+        List<Object> genericList = this.listGeneric();
 
-        for (Object item : personList) {
+        for (Object item : genericList) {
             Map<String, Object> casted = (Map<String, Object>) (item);
             System.out.println(casted);
             if (casted.get("firstname").toString().equalsIgnoreCase(firstName)
@@ -55,9 +55,9 @@ public class PersonRepo extends BaseRepository<Person> {
     }
 
     public Optional<Map<String, Object>> getWithEmail(String email) {
-        List<Object> personList = this.listGeneric();
+        List<Object> genericList = this.listGeneric();
 
-        for (Object item : personList) {
+        for (Object item : genericList) {
             Map<String, Object> casted = (Map<String, Object>) (item);
             System.out.println(casted);
             if (casted.get("email").toString().equalsIgnoreCase(email)) {
@@ -86,20 +86,16 @@ public class PersonRepo extends BaseRepository<Person> {
         return map;
     }
 
-    public Person create(Person entityData) {
-        String actualContent = this.fileRepo.readJsonFile();
-        if (actualContent == "{}") {
-            this.memoryData.put("Person", new ArrayList<Person>());
-        }
-        actualContent = this.fileRepo.readJsonFile();
-        System.out.println(actualContent);
-        List<Person> personList = this.list();
+    public Generic create(Generic entityData) {
+        System.out.println("Creatingg..." + this.fieldname);
+        List<Object> genericList = this.listGeneric();
+        System.out.println("Genooooooo " + genericList + " " + this.listGeneric());
         try {
             System.out.println("Writing to file..." + entityData);
             System.out.println("Content Data : " + this.memoryData);
-            personList.add(entityData);
+            genericList.add(entityData);
 
-            this.memoryData.put("Person", personList);
+            this.memoryData.put(fieldname, genericList);
             this.fileRepo.writeJsonFile(this.memoryData);
 
         } catch (Exception error) {
@@ -110,29 +106,28 @@ public class PersonRepo extends BaseRepository<Person> {
     };
 
     public void memoryReload() {
-
         String content = this.fileRepo.readJsonFile();
         Hashtable<String, Object> ccd = JSON.parseObject(content, this.memoryData.getClass());
         this.memoryData = ccd;
     }
 
     public void loadToMem(Object data) {
-        this.memoryData.put("Person", data);
+        this.memoryData.put(this.fieldname, data);
     }
 
-    public void update(String entityId, Person patchData) {
+    public void update(String entityId, Generic patchData) {
         System.out.println("updating....");
         this.memoryReload();
-        List<Object> personList = this.listGeneric();
+        List<Object> genericList = this.listGeneric();
 
         System.out.println("buggie");
-        System.out.println(personList);
-        // Dictionary<String, Object> da = (Hashtable) personList.get(0);
+        System.out.println(genericList);
+        // Dictionary<String, Object> da = (Hashtable) genericList.get(0);
 
-        boolean isRemoved = personList.removeIf((per) -> {
+        boolean isRemoved = genericList.removeIf((per) -> {
             Map<String, Object> pp = (Map<String, Object>) per;
             if (pp.get("userId") == null) {
-                System.out.println("Corrupted file schema in person!");
+                System.out.println("Corrupted file schema in generic!");
                 return false;
             }
             if (pp.get("userId").toString().equalsIgnoreCase(entityId)) {
@@ -142,10 +137,10 @@ public class PersonRepo extends BaseRepository<Person> {
         });
 
         if (isRemoved) {
-            personList.add(patchData);
+            genericList.add(patchData);
         }
 
-        this.loadToMem(personList);
+        this.loadToMem(genericList);
         try {
             this.fileRepo.writeJsonFile(this.memoryData);
         } catch (Exception error) {
@@ -156,10 +151,10 @@ public class PersonRepo extends BaseRepository<Person> {
 
     public void delete(String entityId) {
 
-        boolean isRemoved = personList.removeIf((per) -> {
+        boolean isRemoved = genericList.removeIf((per) -> {
             Map<String, Object> pp = (Map<String, Object>) per;
             if (pp.get("userId") == null) {
-                System.out.println("Corrupted file schema in person!");
+                System.out.println("Corrupted file schema in generic!");
                 return false;
             }
             if (pp.get("userId").toString().equalsIgnoreCase(entityId)) {
@@ -170,31 +165,32 @@ public class PersonRepo extends BaseRepository<Person> {
 
     };
 
-    public List<Person> list() {
+    public List<Generic> list() {
 
         System.out.println("List is called");
         String content = this.fileRepo.readJsonFile();
+
         if (content == "") {
-            return new ArrayList<Person>();
+            return new ArrayList<Generic>();
         }
+
         Dictionary<String, Object> ccd = JSON.parseObject(content, this.memoryData.getClass());
-        // System.out.println("CDD " + content + ccd);
         try {
 
-            List<Person> personList = (List<Person>) ccd.get("Person");
-            this.personList = personList;
-            return personList;
+            List<Generic> genericList = (List<Generic>) ccd.get(fieldname);
+            this.genericList = genericList;
+            return genericList;
 
         } catch (ClassCastException e) {
-            System.out.println("DOMAIN NAME : " + "Person");
+            System.out.println("DOMAIN NAME : " + fieldname);
             System.out.println("Corrupted Data during type casting...");
             e.printStackTrace();
-            return new ArrayList<Person>();
+            return new ArrayList<Generic>();
         } catch (Exception e) {
-            System.out.println("DOMAIN NAME : " + "Person");
+            System.out.println("DOMAIN NAME : " + "Generic");
             System.out.println("Dictionay Error...");
             e.printStackTrace();
-            return new ArrayList<Person>();
+            return new ArrayList<Generic>();
         }
 
     };
@@ -203,23 +199,26 @@ public class PersonRepo extends BaseRepository<Person> {
 
         System.out.println("List is called");
         String content = this.fileRepo.readJsonFile();
+        System.out.println(
+                "CDD before" + content + " " + this.fileRepo.fullRepoPath + " " + this.fileRepo.dataEntryPoint);
+
         if (content == "") {
             return new ArrayList<Object>();
         }
         Dictionary<String, Object> ccd = JSON.parseObject(content, this.memoryData.getClass());
-        // System.out.println("CDD " + content + ccd);
+        System.out.println("CDD " + content + ccd);
         try {
 
-            List<Object> personList = (List<Object>) ccd.get("Person");
-            return personList;
+            List<Object> genericList = (List<Object>) ccd.get(fieldname);
+            return genericList;
 
         } catch (ClassCastException e) {
-            System.out.println("DOMAIN NAME : " + "Person");
+            System.out.println("DOMAIN NAME : " + "Generic");
             System.out.println("Corrupted Data during type casting...");
             e.printStackTrace();
             return new ArrayList<Object>();
         } catch (Exception e) {
-            System.out.println("DOMAIN NAME : " + "Person");
+            System.out.println("DOMAIN NAME : " + "Generic");
             System.out.println("Dictionay Error...");
             e.printStackTrace();
             return new ArrayList<Object>();

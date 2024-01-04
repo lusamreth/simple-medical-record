@@ -4,18 +4,38 @@ import java.lang.String;
 import java.util.Date;
 
 import simple.medical.record.utils.UniqueIdGenerator;
+import simple.medical.record.utils.UnixTimestampAdapter;
+
+import com.google.gson.annotations.JsonAdapter;
 
 public class Person {
     private String userId;
     private String firstname;
     private String lastname;
     private String sex;
+    @JsonAdapter(UnixTimestampAdapter.class)
     private Date dateofbirth;
     private Address address;
     // private String address;
     private String[] phoneNumber;
     private String password;
     private String email;
+
+    // READ OUT
+    // "address": {
+    // "district": "asd",
+    // "province": "asd",
+    // "street": "asd",
+    // "village": "asd"
+    // },
+    // "dateofbirth": 61089786000000,
+    // "email": "$2a$12$U2IVnEHczYGYmRqCwwSH/.tTtVmixyp91S/SW6rqrG5GED6QIoige",
+    // "firstname": "asd",
+    // "lastname": "asd",
+    // "password": "$2a$12$U2IVnEHczYGYmRqCwwSH/.tTtVmixyp91S/SW6rqrG5GED6QIoige",
+    // "phoneNumber": [],
+    // "sex": "M",
+    // "userId": "e4db0854-d5c0-45be-9887-6e40e793b265"
 
     public Person(String firstname, String lastname, String email, String sex, Date dateofbirth, String[] phoneNumber,
             Address address,
@@ -86,6 +106,14 @@ public class Person {
 
     public void setPhoneNumber(String[] phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public void setUserId(String id) {
+        this.userId = id;
+    }
+
+    public void setPassword(String pass) {
+        this.password = pass;
     }
 
     public int calculateAge() {

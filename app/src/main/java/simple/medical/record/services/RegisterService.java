@@ -20,8 +20,13 @@ import simple.medical.record.utils.Cypher;
 import simple.medical.record.utils.PasswordCypher;
 
 public class RegisterService {
+    Person generatedData;
 
-    public static void run() {
+    public Person getGeneratedData() {
+        return this.generatedData;
+    }
+
+    public void run() {
 
         PersonRepo personRepo = new PersonRepo("person.json");
 
@@ -80,26 +85,37 @@ public class RegisterService {
 
             String breakpoint = "c";
             System.out.println("Break point to break from form loop : " + breakpoint);
-            while (!phForm.getValue("phoneNumber").equalsIgnoreCase(breakpoint)) {
+            Boolean isRunning = true;
+
+            while (isRunning) {
                 phForm.scanForInput();
-                phList.add(phForm.getValue("phoneNumber"));
+                if (!phForm.getValue("phoneNumber").equalsIgnoreCase(breakpoint)) {
+                    phList.add(phForm.getValue("phoneNumber"));
+                } else {
+                    isRunning = false;
+                }
             }
         } catch (Exception e) {
         }
+
         PasswordCypher pwCypher = new Cypher();
         Callable<Person> combineInfo = () -> {
             return new Person(generalUserForm.getValue("firstname"), generalUserForm.getValue("lastname"),
                     generalUserForm.getValue("email"),
+
                     generalUserForm.getValue("sex"),
                     dateUserForm.getResultObject(),
                     phForm.getResultObject().toArray(new String[0]),
                     addressUserForm.getResultObject(),
                     pwCypher.hash(generalUserForm.getValue("password")));
         };
+
         try {
             Person Registered = combineInfo.call();
             personRepo.create(Registered);
+            this.generatedData = Registered;
         } catch (Exception e) {
+            System.out.println("Exception during register : " + e.toString());
         }
 
     }

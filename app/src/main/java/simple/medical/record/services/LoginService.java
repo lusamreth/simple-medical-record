@@ -2,6 +2,7 @@
 package simple.medical.record.services;
 
 import simple.medical.record.CLIFormFetcher;
+import simple.medical.record.domains.Person;
 
 import java.lang.String;
 
@@ -15,10 +16,18 @@ import java.util.Optional;
 import simple.medical.record.repository.PersonRepo;
 import simple.medical.record.utils.Cypher;
 import simple.medical.record.utils.PasswordCypher;
+import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
 
 public class LoginService {
+    public Boolean isLogin = false;
+    public Person personInfo;
 
-    public static void run() {
+    public Boolean getLogin() {
+        return isLogin;
+    }
+
+    public void run() {
 
         PersonRepo personRepo = new PersonRepo("person.json");
         PasswordField pw = new PasswordField("password");
@@ -40,22 +49,32 @@ public class LoginService {
         String breakpoint = "c";
         System.out.println("Break point to break from form loop : " + breakpoint);
 
-        try {
-            // Person Registered = combineInfo.call();
-            String email = generalUserForm.getValue("email");
-            Optional<Map<String, Object>> isExisted = personRepo.getWithEmail(email);
-            PasswordCypher pwCypher = new Cypher();
+        String email = generalUserForm.getValue("email");
 
-            if (isExisted.isEmpty()) {
+        Gson gson = new Gson();
+
+        try {
+            Optional<Map<String, Object>> rawInfo = personRepo.getWithEmail(email);
+            //
+            // Person Registered = combineInfo.call();
+            // String email = generalUserForm.getValue("email");
+            // Optional<Map<String, Object>> isExisted = personRepo.getWithEmail(email);
+            PasswordCypher pwCypher = new Cypher();
+            // System.out.println(rawInfo);
+            if (rawInfo.isEmpty()) {
                 System.out.println(
                         "The user with this email : " + email + " does not exists!");
             } else {
-                String dbPass = isExisted.get().get("password").toString().trim();
+                System.out.println("GSONNN " + rawInfo);
+                Person personInfo = gson.fromJson(rawInfo.get().toString(), Person.class);
+                String dbPass = personInfo.getPassword().toString().trim();
                 String userPass = generalUserForm.getValue("password").toString().trim();
                 Boolean isValid = pwCypher.compare(userPass, dbPass);
 
                 if (isValid) {
                     System.out.println("Login succeeded!");
+                    this.isLogin = true;
+                    this.personInfo = personInfo;
                 } else {
                     System.out.println("Login Failed!");
 

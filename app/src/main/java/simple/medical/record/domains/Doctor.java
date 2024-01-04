@@ -2,6 +2,7 @@
 package simple.medical.record.domains;
 
 import simple.medical.record.domains.meta.PersonInterface;
+import simple.medical.record.utils.UniqueIdGenerator;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -21,7 +22,6 @@ public class Doctor extends PersonInterface {
 
     public Doctor(
             Person personInfo,
-            String doctorID,
             String specialty, String qualification,
             String medRecidency, String description) {
 
@@ -34,7 +34,7 @@ public class Doctor extends PersonInterface {
         // anynomous inner class
         // explain protected, public , private
         //
-        this.doctorID = doctorID;
+        this.doctorID = UniqueIdGenerator.genId();
         this.specialty = specialty;
         this.qualification = qualification;
         this.medRecidency = medRecidency;

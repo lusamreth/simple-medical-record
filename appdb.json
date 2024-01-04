@@ -1,0 +1,23 @@
+{
+  "Person": [
+    {
+      "address": {
+        "district": "aksjd",
+        "province": "asd",
+        "street": "asd",
+        "village": "asd"
+      },
+      "dateofbirth": 61036218000000,
+      "email": "SS@gmail",
+      "firstname": "askdjad",
+      "lastname": "aksdj",
+      "password": "$2a$12$d7k2/sptSNThY19UsiZKCuhXVywKCiDoB80ym0pCvlPSZsRIU6Km.",
+      "phoneNumber": [
+        "ksjdad"
+      ],
+      "sex": "M",
+      "userId": "7059c600-74f9-4247-8329-229345fb3ba7"
+    }
+  ]
+}
+

@@ -30,6 +30,10 @@ public class FileRepoJson extends FileRepo {
         super();
     }
 
+    public FileRepoJson(String entryField) {
+        super(entryField);
+    }
+
     // normal insertion
     public void insertToFile(String contentLine) throws IOException {
 
@@ -165,15 +169,8 @@ public class FileRepoJson extends FileRepo {
 
         JSONReaderImpl reader = new JSONReaderImpl(repoFReader, errHandler);
         reader.run();
-        // System.out.println("value" + reader.getValue());
 
         return reader.fullContent;
-    }
-
-    // method for reading and loading each line into array list
-    public ArrayList<String> read() {
-
-        return this.loadedContent;
     }
 
 }
