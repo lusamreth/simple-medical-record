@@ -1,11 +1,10 @@
 package simple.medical.record.repository;
 
-import java.util.ArrayList;
-import java.util.Map;
 import java.util.List;
+import java.util.Optional;
 
 public abstract class BaseRepository<Entity> {
-    abstract public Entity get(String entityId);
+    abstract public <T> Optional<T> get(String entityId);
 
     abstract public Entity create(Entity entityData);
 
@@ -14,6 +13,8 @@ public abstract class BaseRepository<Entity> {
     abstract public void delete(String entityId);
 
     abstract public List<Entity> list();
+
+    abstract public <T> List<T> listGeneric();
 
 }
 
