@@ -52,7 +52,7 @@ abstract public class FileRepo {
         String DEFAULT_DIR = System.getProperty("user.dir");
         // this.init(repoPath, dataEntryPoint);
         this.dataEntryPoint = dataEntryPoint;
-        this.fullRepoPath = DEFAULT_DIR + dataEntryPoint;
+        this.fullRepoPath = DEFAULT_DIR + "/" + dataEntryPoint + ".json";
         this.fileObject = new File(this.fullRepoPath);
         this.init(DEFAULT_DIR, dataEntryPoint);
     }
