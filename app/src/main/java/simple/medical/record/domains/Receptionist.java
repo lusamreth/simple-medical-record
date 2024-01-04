@@ -5,9 +5,11 @@ import java.util.Date;
 public class Receptionist extends Person {
     private String receptionistID;
 
-    public Receptionist(String firstname, String lastname, String sex, Date dateofbirth, String[] phoneNumber,
+    public Receptionist(String firstname, String lastname, String email, String sex, Date dateofbirth,
+            String[] phoneNumber,
             Address address, String receptionistID) {
-        super(firstname, lastname, sex, dateofbirth, phoneNumber, address, "");
+        super(firstname, lastname, sex, email, dateofbirth, phoneNumber, address, "");
+
         this.receptionistID = receptionistID;
     }
 
@@ -28,9 +30,5 @@ public class Receptionist extends Person {
                 "5. Address: " + getAddress() + "\n" +
                 "6. Phone Number: " + displayPhoneNumber() + "\n");
     }
-    // @Override
-    // public String toString() {
-    // return "Receptionist [receptionistID=" + receptionistID + "]";
-    // }
 
 }

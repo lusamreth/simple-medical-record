@@ -8,9 +8,9 @@ public class Patient extends Person {
     private String emer_call;
     private String last_visited;
 
-    public Patient(String firstname, String lastname, String sex, Date dateofbirth, String[] phoneNumber,
+    public Patient(String firstname, String lastname, String sex, String email, Date dateofbirth, String[] phoneNumber,
             Address address, String patientID, String emer_call, String last_visited) {
-        super(firstname, lastname, sex, dateofbirth, phoneNumber, address, "");
+        super(firstname, lastname, sex, email, dateofbirth, phoneNumber, address, "");
         this.patientID = patientID;
         this.emer_call = emer_call;
         this.last_visited = last_visited;

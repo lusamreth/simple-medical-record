@@ -7,7 +7,6 @@ import simple.medical.record.utils.UniqueIdGenerator;
 
 public class Person {
     private String userId;
-    private String fullname;
     private String firstname;
     private String lastname;
     private String sex;
@@ -16,15 +15,16 @@ public class Person {
     // private String address;
     private String[] phoneNumber;
     private String password;
+    private String email;
 
-    public Person(String firstname, String lastname, String sex, Date dateofbirth, String[] phoneNumber,
+    public Person(String firstname, String lastname, String email, String sex, Date dateofbirth, String[] phoneNumber,
             Address address,
             // String address,
             String password) {
 
         this.firstname = firstname;
         this.lastname = lastname;
-        this.fullname = firstname + " " + lastname;
+        this.email = email;
         this.sex = sex;
         this.userId = UniqueIdGenerator.genId();
         this.dateofbirth = dateofbirth;
@@ -34,8 +34,8 @@ public class Person {
 
     }
 
-    public String getFullName() {
-        return this.fullname;
+    public String getfullName() {
+        return this.firstname + " " + this.lastname;
     }
 
     public String getUserId() {
@@ -101,7 +101,7 @@ public class Person {
     }
 
     public String getEmail() {
-        return this.password;
+        return this.email;
     }
 
     public String displayPhoneNumber() {

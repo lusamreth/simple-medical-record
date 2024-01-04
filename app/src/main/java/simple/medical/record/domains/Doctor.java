@@ -21,10 +21,6 @@ public class Doctor extends PersonInterface {
 
     public Doctor(
             Person personInfo,
-            // String firstname, String lastname, String sex, Date dateofbirth, String[]
-            // phoneNumber,
-            // Address address,
-            // String email, String password,
             String doctorID,
             String specialty, String qualification,
             String medRecidency, String description) {
