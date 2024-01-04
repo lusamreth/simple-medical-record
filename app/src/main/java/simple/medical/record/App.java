@@ -4,11 +4,12 @@
 
 package simple.medical.record;
 
-import java.sql.Date;
+import java.util.Scanner;
 
-import simple.medical.record.domains.Address;
-import simple.medical.record.domains.Person;
-import simple.medical.record.repository.PersonRepo;
+// import javax.crypto.spec.PBEKeySpec;
+
+import simple.medical.record.services.LoginService;
+import simple.medical.record.services.RegisterService;
 
 public class App {
     public String getGreeting() {
@@ -18,26 +19,32 @@ public class App {
     public static void main(String[] args) {
         Runner runner = new Runner();
         runner.run();
+        String[] serviceNames = { "register", "login" };
 
-        PersonRepo personRepo = new PersonRepo("person.json");
+        System.out.println("Welcome to simple medical record system!");
+        System.out.println("Main menu:");
+        Scanner sc = new Scanner(System.in);
 
-        Date date = new Date(2003, 5, 12);
-        Person person1 = new Person("first", "last kskajsjd", "M", date, new String[] { "123233" },
-                new Address("b", "xxxxc", "c", "c"),
-                "1234");
+        for (int i = 0; i < serviceNames.length; i++) {
+            String serviceName = serviceNames[i];
+            System.out.println(i + 1 + "." + "" + serviceName);
+        }
 
-        Person personMod = new Person("jurk ma", "duma didiovvvvvv", "M", date, new String[] { "123233" },
-                new Address("b", "xxxxc", "c", "c"),
-                "1234");
-
-        personRepo.create(person1);
-        // personRepo.create(person1);
-        // personRepo.create(person1);
-        // personRepo.create(personMod);
-        // personRepo.list();
-        // personRepo.update("6ae2d4a-5592-4844-bff4-79a849c248f0",
-        // personMod);
-
-        System.out.println(new App().getGreeting());
+        System.out.print("=> Choice: ");
+        int selected = sc.nextInt();
+        switch (selected) {
+            case 1:
+                System.out.println("Register selected!");
+                RegisterService.run();
+                break;
+            case 2:
+                System.out.println("Login selected!");
+                LoginService.run();
+                break;
+            default:
+                System.out.println("Invalid service to select");
+                break;
+        }
+        sc.close();
     }
 }
