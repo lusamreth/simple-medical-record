@@ -126,13 +126,15 @@ Why: It is reusable and reliable to keep the function going while they are invol
 How: We have use it in many places like:
 - [FileRepo Class](): it has 3 overloading method  
     + First method is use for call  the file input of the datas will store  
-    ***java
+    ``` java
+        
         public FileRepo(String repoPath, String dataEntryPoint) {
             this.init(repoPath, dataEntryPoint);
         }
-    ***
+
+    ```
     + Second Method is use for indicating setup or initialization logic for data entry. 
-    ***java
+    ```java
         public FileRepo(String dataEntryPoint) {
             String DEFAULT_DIR = System.getProperty("user.dir");
     
@@ -141,9 +143,9 @@ How: We have use it in many places like:
             this.fileObject = new File(this.fullRepoPath);
             this.init(DEFAULT_DIR, dataEntryPoint);
         }
-    ***
+    ```
     + Third Method: use for assuming default values for the data entry point and sets up the FileRepo object with default configurations.
-    ***java
+    ```java
         public FileRepo() {
             String DEFAULT_DIR = System.getProperty("user.dir");
             System.out.println("USING DEFAULT REPO DIR " + DEFAULT_DIR);
@@ -152,20 +154,20 @@ How: We have use it in many places like:
             this.fileObject = new File(this.fullRepoPath);
             this.init(DEFAULT_DIR, "db.json");
         }
-    ***
+    ```
 - [FileRepoJson](): it has 2 overloading method 
     + First Method: Use to inherit from the super class without field inside.
-    ***java
+    ```java
         public FileRepoJson() {
             super();
         }
-    ***
+    ```
     + Second Method: Use to inherit from the super class but include the entryField as the field to get the data from the input.
-    ***java
+    ```java
         public FileRepoJson(String entryField) {
             super(entryField);
         }
-    ***
+    ```
 
 
 
@@ -229,5 +231,6 @@ public void writeJsonFile(Dictionary<String, Object> content) throws IOException
 
 
 # **Static Method**
+
 
 
