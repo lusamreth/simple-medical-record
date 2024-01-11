@@ -35,32 +35,29 @@ We have 25 classes. For Class (1-13) use to call the information about patient, 
 _______________________________________________
 **Directory: [Domain/MedicalRecordEntity]((https://github.com/lusamreth/simple-medical-record/tree/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains))**
 
-1. _[Diagnosis Class](https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/Diagnosis.java)_:
+1. _[Diagnosis Class](https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/Diagnosis.java)_
 
-2. _[Intake Class]((https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/Intake.java))_
+2. _[Intake Class](https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/Intake.java)_
 
-3. _[Prescription Class]((https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/Prescription.java))_
+3. _[Prescription Class](https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/Prescription.java)_
 
+4. _[MedicalRecord Class](https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/MedicalRecord.java)_
 
-4. _[MedicalRecord Class]((https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/MedicalRecord.java))_
+5. _[PersonInterface](https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/meta/PersonInterface.java)_
 
+6. _[Address Class](https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/Address.java)_
 
-5. _[PersonInterface]((https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/meta/PersonInterface.java))_
+7. _[Doctor Class](https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/Doctor.java)_
 
+8. _[Hospital Class](https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/Hospital.java)_
 
-6. _[Address Class]((https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/Address.java))_
+9. _[MedicalDate Class](https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/MedicalDate.java)_
 
-7. _[Doctor Class]((https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/Doctor.java))_
+10. _[Patient Class](https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/Patient.java)_
 
-8. _[Hospital Class]((https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/Hospital.java))_
+11. _[Person Class](https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/Person.java)_
 
-9. _[MedicalDate Class]((https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/MedicalDate.java))_
-
-10. _[Patient Class]((https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/Patient.java))_
-
-11. _[Person Class]((https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/Person.java))_
-
-12. _[Receptionist Class]((https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/Receptionist.java))_
+12. _[Receptionist Class](https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/Receptionist.java)_
 
 13. _[Person Interface](https://github.com/lusamreth/simple-medical-record/blob/7f1fd28d62b4ffbd4380bd678f633a7f7b43dbeb/app/src/main/java/simple/medical/record/domains/meta/PersonInterface.java)_
 
