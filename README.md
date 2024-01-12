@@ -68,20 +68,34 @@ _______________________________________________
 17. _[FileRepoJSon Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/repository/FileRepoJson.java)_
 
 18. _[PersonRepo Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/repository/PersonRepo.java)_
-19. _[DoctorService Class]()_
-20. _[LoginService Class]()_
-21. _[RegisterSevice Class]()_
-22. _[Cypher Class]()_
-23. _[MapUtil Class]()_
-24. _[PasswordCypher Class]()_
-25. _[UniqueIdGenerator class]()_
-26. _[UnixTimestampAdapter class]()_
-27.  _[EnumsField]()_
-28.  _[InputField]()_
-29.  _[PasswordField]()_
-30.  _[StringField]()_
-31.  _[App.java]()_
-32.  _[CLIFormFetcher]()_
+
+19. _[DoctorService Class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/services/DoctorService.java)_
+
+20. _[LoginService Class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/services/LoginService.java)_
+
+21. _[RegisterSevice Class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/services/RegisterService.java)_
+
+22. _[Cypher Class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/utils/Cypher.java)_
+
+23. _[MapUtil Class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/utils/MapUtils.java)_
+
+24. _[PasswordCypher Class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/utils/PasswordCypher.java)_
+
+25. _[UniqueIdGenerator class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/utils/UniqueIdGenerator.java)_
+
+26. _[UnixTimestampAdapter class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/utils/UnixTimestampAdapter.java)_
+
+27.  _[EnumsField](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/validation/EnumsField.java)_
+
+28.  _[InputField](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/validation/InputField.java)_
+
+29.  _[PasswordField](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/validation/PasswordField.java)_
+
+30.  _[StringField](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/validation/StringField.java)_
+
+31.  _[App.java](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/App.java)_
+
+32.  _[CLIFormFetcher](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/CLIFormFetcher.java)_
 
 
 # **Inheritance**
@@ -90,9 +104,9 @@ What: Inheritance is the class"Super Class" that can use by other class"Sub-clas
 Why: It make the code more reusable and fast when there are many similar field of of class. 
 How: Here is where we have impliment it
 
-- [Person Class](): all the user has the similar personal information of the user.
+- [Person Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/Person.java): all the user has the similar personal information of the user.
     + We have 3 sub class include: Patint Class, Doctor, Receptionist extends from super class Person
-- [FileRepo](): the [FileRepoJson]() use for the customize the reader object from the user input. 
+- [FileRepo Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/repository/FileRepo.java): the [FileRepoJson]() use for the customize the reader object from the user input. 
     + We have a sub class [FileRepoJson]() extends from the super class [FileRepo]()
 - [BaseRepository](): all the 2 sub class is th exaplainable code for each function which call in the super class. 
     + We have a sub class include [BaseRepoStore](), [PersonRepo]() extends from the super class [BaseRepository](). 
@@ -109,7 +123,7 @@ How: In our class files, we have include the contructor on nearly every files. [
 What: it is the method or function which allow to use with the same name but different field input.
 Why: It is reusable and reliable to keep the function going while they are involve using with many classes. It will create a constant name for all developer to remember more easy.
 How: We have use it in many places like:
-- [FileRepo Class](): it has 3 overloading method  
+- [FileRepo Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/repository/FileRepo.java): it has 3 overloading method  
     + First method is use for call  the file input of the datas will store  
     ``` java
         
@@ -216,6 +230,3 @@ public void writeJsonFile(Dictionary<String, Object> content) throws IOException
 
 
 # **Static Method**
-
-
-
