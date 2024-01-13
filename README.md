@@ -26,12 +26,10 @@ cwand test results, fostering informed decision-making and active patient partic
 
 1. Create Doctor Account
 2. Create Patient Account
-3. Create Medical Record
-4. Generate Report
 
 
 # **The Detail of Each Class(Report)**
-We have 25 classes. For Class (1-13) use to call the information about patient, doctor, receptionist, medical record as well. For Class (14-17) use for the **Store Data Service** for all information of the user. For class (18) use for the **REGISTER SERVICE** for the new user. For Class(19) use for **Generate ID** for the identification for the primary key of each information class. For class (20-23) Use for **LOGIN SERVICE**. for (24-25) use for running as the main of the whole program.
+We have 31 classes and 2 files input/output. For Class (1-13) use to call the information about patient, doctor, receptionist, medical record as well. For Class (14-17) use for the **Store Data Service** for all information of the user. For class (18) use for the **REGISTER SERVICE** for the new user. For Class(19) use for **Generate ID** for the identification for the primary key of each information class. For class (20-23) Use for **LOGIN SERVICE**. for (24-25) use for running as the main of the whole program.
 _______________________________________________
 1. _[Diagnosis Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/Diagnosis.java)_
 
@@ -107,14 +105,17 @@ _______________________________________________
 Inheritance is the class"Super Class" that can use by other class"Sub-class". It make the code more reusable and fast when there are many similar field of of class that we want to impliment. 
 Here is where we have impliment 4 inheritance class serve differently
 
-- Person Class: all the user has the similar personal information of the user.
-    + We have 3 sub class include: Patint Class, Doctor, Receptionist extends from super class Person
-- [FileRepo Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/repository/FileRepo.java): the [FileRepoJson]() use for the customize the reader object from the user input. 
-    + We have a sub class [FileRepoJson]() extends from the super class [FileRepo]()
-- [BaseRepository](): all the 2 sub class is th exaplainable code for each function which call in the super class. 
-    + We have a sub class include [BaseRepoStore](), [PersonRepo]() extends from the super class [BaseRepository](). 
-- [InputField](): all the class use for making sure the use will input more properly as we wanted.
-    + We have a sub class include [EnumsField](), [PasswordField](), [StringField]() extends from the super class [InputField]().
+- [Person Class](https://github.com/lusamreth/simple-medical-record/blob/1fc279f0fa398e4a92baeb585ad7098c09e98373/app/src/main/java/simple/medical/record/domains/Person.java): all the user has the similar personal information of the user.
+    + We have 3 sub class include: Patint Class, Doctor, Receptionist extends from super class Person. 
+
+- [FileRepo Class](https://github.com/lusamreth/simple-medical-record/blob/1fc279f0fa398e4a92baeb585ad7098c09e98373/app/src/main/java/simple/medical/record/repository/FileRepo.java): the [FileRepoJson](https://github.com/lusamreth/simple-medical-record/blob/1fc279f0fa398e4a92baeb585ad7098c09e98373/app/src/main/java/simple/medical/record/repository/FileRepoJson.java) use for the customize the reader object from the user input. 
+    + We have a sub class FileRepoJson extends from the super class **FileRepo** because it will be beneficial when it grow into the big system that allow us to customized the files reader more reliable. 
+
+- [BaseRepository](https://github.com/lusamreth/simple-medical-record/blob/1fc279f0fa398e4a92baeb585ad7098c09e98373/app/src/main/java/simple/medical/record/repository/BaseRepository.java): all the 2 sub class is th exaplainable code for each function which call in the super class. 
+    + We have a sub class include **BaseRepoStore, PersonRepo** extends from the super class **BaseRepository**. 
+
+- [InputField](https://github.com/lusamreth/simple-medical-record/blob/1fc279f0fa398e4a92baeb585ad7098c09e98373/app/src/main/java/simple/medical/record/validation/InputField.java): all the class use for making sure the use will input more properly as we wanted.
+    + We have a sub class include **EnumsField, PasswordField, StringField** extends from the super class **InputField**. we use it as the inheritance due to all the sub class is working on different function with the same purpose of the validation information of the user. 
 
 **Constructor**:
 What: The special method use to create object for the class, It is used to initialize the object's state, allocate resources, or perform any other setup tasks.
@@ -174,34 +175,61 @@ How: We have use it in many places like:
 ### **Override Method**
 
 
+[DoctorService Class](https://github.com/lusamreth/simple-medical-record/blob/1fc279f0fa398e4a92baeb585ad7098c09e98373/app/src/main/java/simple/medical/record/services/DoctorService.java): use for register the information of the doctor which is the addictional information of the doctor. 
+```java
+    @Override()
+        public Doctor convertToClass() {
+            return new Doctor(gen, this.getValue("specialty"), this.getValue("qualification"),
+                    this.getValue("medRecidency"), this.getValue("description"));
+            // return true;
+        }
+```
+
+[EnumsField](https://github.com/lusamreth/simple-medical-record/blob/1fc279f0fa398e4a92baeb585ad7098c09e98373/app/src/main/java/simple/medical/record/validation/EnumsField.java): use to check the condition of the input data size in order to make the data more consistancy. 
+```java
+    @Override
+    public boolean Validator() {
+        boolean isValid = false;
+        for (int i = 0; i < this.EnumValues.length; i++) {
+            if (EnumValues[i].equalsIgnoreCase(this.getValue())) {
+                return true;
+            }
+        }
+
+        return isValid;
+    }
+```
 
 # **Polymorphism**
 Polymorphism refers to the ability of a single function, method, or operator to work with different types of data or objects.
 
 ```java
     public class PasswordField extends InputField {
-    private String SpecialCases = "@#$%^&+=";
-    private Integer minLen = 8;
-    private Integer maxLen = 24;
+        private String SpecialCases = "@#$%^&+=";
+        private Integer minLen = 8;
+        private Integer maxLen = 24;
 
-        public PasswordField() {
-            super("password");
+            public PasswordField() {
+                super("password");
 
-            this.setFieldError(this.getFieldName() + " is invalid!");
-        }
+                this.setFieldError(this.getFieldName() + " is invalid!");
+            }
 
-        public PasswordField(String passname) {
-            super(passname);
-            this.setFieldError(this.getFieldName() + " is invalid!");
-        }
+            public PasswordField(String passname) {
+                super(passname);
+                this.setFieldError(this.getFieldName() + " is invalid!");
+            }
 
-        @Override
-        public boolean Validator() {
-            boolean isValid = false;
-            String inputValue = this.getValue();
-            if (inputValue.length() < minLen) {
-                this.setFieldError("Password must not be below" + minLen + " characters!");
-                return false;
+            @Override
+            public boolean Validator() {
+                boolean isValid = false;
+                String inputValue = this.getValue();
+                if (inputValue.length() < minLen) {
+                    this.setFieldError("Password must not be below" + minLen + " characters!");
+                    return false;
+                }
+            }
+    }
         ....... 
 ```
 look more on this code: [PasswordField](https://github.com/lusamreth/simple-medical-record/blob/eb654a03874074caf60d2d23e8d470cc47a3e87e/app/src/main/java/simple/medical/record/validation/PasswordField.java)
@@ -210,34 +238,120 @@ This Validatior file use the method overriding is a specific type of polymorphis
 
 
 # **Encapsulation**
-- Private
+- Private: 
+    The security field type that allow access/make change only in the super-class only and the sub-class can read-only. We have implimented nearly all the field of our classes. 
+    ```java
+        private String street;
+        private String village;
+        private String district;
+        private String province;
+    ``` 
+
 - Protected:
-    + In the field RepoField Class:
+    These fields/methods are marked as protected to allow subclasses (classes that extend FileRepo) to access them directly. Subclasses "[FileRepoJson](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/repository/FileRepoJson.java)"has inherit and manipulate these fields for impliment the input data into the Json file and validate the input. 
+
+    + In the field [FileRepo](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/repository/FileRepo.java):
         1. Protected Fields:
             + protected String dataEntryPoint;
             + protected String fullRepoPath;
             + protected boolean hasException = false;
-                These fields are marked as protected to allow subclasses (classes that extend FileRepo) to access them directly. Subclasses can inherit and manipulate these fields as needed for specific implementations without exposing them to the entire package or external classes.
+            ```java
+                protected String dataEntryPoint;
+                protected String fullRepoPath;
+                protected boolean hasException = false;
+            ```
         2. Protected Methods:
             + protected synchronized String readFullContent() throws IOException;
+            ```java
+                protected synchronized String readFullContent() throws IOException{
+                    System.out.println("reading full content...");
+                    if (!this.fileObject.exists()) {
+                        this.flagError();
+                        System.out.println("File is not found.");
+                        System.out.println("Location : " + fullRepoPath);
+                        return "";
+                    }
+                }
+            ```
             + protected boolean writeFullContent(String content) throws IOException;
-        3.  Protected Constructor
-            + The fileObject is marked as protected to allow subclasses to access and manipulate the File object directly.
+            ```java
+                protected boolean writeFullContent(String content) throws IOException {
+
+                    File file = new File(fullRepoPath);
+                    if (!file.exists()) {
+                        boolean isCreated = file.createNewFile();
+                        if (!isCreated) {
+                            // throw new Exception("File creation failed");
+                            System.out.println("File creation failed");
+                            return false;
+                        }
+                    }
+                    FileWriter writer = new FileWriter(this.fullRepoPath);
+                    writer.write(content);
+                    writer.close();
+                    return true;
+                }
+            ```
 
 # **Abstraction**
 ### **Abstract Class**
-- Abstract class at BaseRepository<Entity> in ---: designed to provide a generic and abstract foundation for creating repositories that handle basic CRUD operations (Create, Read, Update, Delete) for entities in a data storage system.
-- Abstract class at InputField.java: designed to provide a framework for handling and validating input fields.
+Abstract class: class that has ability to create the method for the sub class use to impliment with their own functionality.
 
-### **interface**
+- Abstract class at BaseRepository<Entity> in [BaseRepository Class](https://github.com/lusamreth/simple-medical-record/blob/1fc279f0fa398e4a92baeb585ad7098c09e98373/app/src/main/java/simple/medical/record/repository/BaseRepository.java): designed to provide a generic and abstract foundation for creating repositories that handle basic CRUD operations (Create, Read, Update, Delete) for entities in a data storage system.
+```java
+    public abstract class BaseRepository<Entity> {
+        abstract public <T> Optional<T> get(String entityId);
+        abstract public Entity create(Entity entityData);
+        abstract public void update(String entityId, Entity patchData);
+        abstract public void delete(String entityId);
+        abstract public List<Entity> list()
+        abstract public <T> List<T> listGeneric();
+
+    }
+```
 
 
+- Abstract class at [InputField class](https://github.com/lusamreth/simple-medical-record/blob/1fc279f0fa398e4a92baeb585ad7098c09e98373/app/src/main/java/simple/medical/record/validation/InputField.java): designed to provide a framework for handling and validating input fields.
+
+```java
+    public abstract boolean Validator();
+```
 
 # **Exception Handling**
+Exception Handling: it is the method use for avoiding the user input that contrast with our standard data. We implimented it 16 methods of expeception headling which some of work differently due to the condition data. 
+    
+```java
+    try {
+                this.dataRegistry.put(fieldName, field.verify());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                throw new RuntimeException();
+            }
 
+    ----------------------------------
+    try {
+            generalDoctorForm.scanForInput();
+        } catch (Exception e) {
+            System.out.println("Encountered input error!! " + e);
+            e.printStackTrace();
+            return;
+        }
+
+    ----------------------------------
+    try {
+        Doctor Registered = combineInfo.call();
+        doctorRepo.create(Registered);
+    } catch (Exception e) {
+        System.out.println("Exception during register : " + e.toString());
+    }
+    .
+    .
+    .more
+   
+```
 
 # **File I/O**
-We utilize a single 'appdb.json' file for both storing and validating user information during authentication. This approach simplifies data management, improves code organization, and enhances readability. Having a unified file as the sole source of truth promotes simplicity, reducing complexity and potential errors. This design choice provides a streamlined solution, ensuring efficient scalability and adaptability to changes in user data.
+We utilize a '[appdb.json](https://github.com/lusamreth/simple-medical-record/blob/1fc279f0fa398e4a92baeb585ad7098c09e98373/appdb.json)' file for storing patient data and '[db.json](https://github.com/lusamreth/simple-medical-record/blob/1fc279f0fa398e4a92baeb585ad7098c09e98373/db.json)' for storing doctor and validating all user information during authentication. Since we have done only 2 autheticate "Patient & Doctor", we only has 2 files of I/O. If we combine the file into one input we has seen the lost of data which has store before. 
 
 # **Anonymous inner class**
 An anonymous inner class in Java is a class without a name that's defined and instantiated in a single expression.
@@ -259,3 +373,32 @@ public void writeJsonFile(Dictionary<String, Object> content) throws IOException
 This function provides a way to write the contents to a JSON file, using the repoWriter function to handle the writing process. This function benefit us to check the condition when import the data to the json files.
 
 # **Static Method**
+Static Method: the method that can impliment without create a new class. The static help us easy to navigate only in the relvent class that we want and make use of it anytimes. 
+
+The first method is use the process of convert the object into the a dictionary which is the templete similar to the json. [BaseRepoStore](https://github.com/lusamreth/simple-medical-record/blob/1fc279f0fa398e4a92baeb585ad7098c09e98373/app/src/main/java/simple/medical/record/repository/BaseRepoStore.java)
+```java
+    public static Dictionary<String, Object> convertToMap(Object obj) {
+        Dictionary<String, Object> map = new Hashtable<String, Object>();
+        Field[] fields = obj.getClass().getDeclaredFields();
+
+        for (Field field : fields) {
+        .
+        .
+        .
+
+    }
+```
+
+This method is to run the register service of our doctor. [doctor class](https://github.com/lusamreth/simple-medical-record/blob/1fc279f0fa398e4a92baeb585ad7098c09e98373/app/src/main/java/simple/medical/record/services/DoctorService.java) & 
+```java
+    
+    public static void run() {
+
+        DoctorRepo doctorRepo = new DoctorRepo();
+        RegisterService Reg = new RegisterService();
+        Reg.run();
+        .
+        .
+        .
+    }
+```
