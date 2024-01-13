@@ -31,69 +31,69 @@ cwand test results, fostering informed decision-making and active patient partic
 # **The Detail of Each Class(Report)**
 We have 31 classes and 2 files input/output. For Class (1-13) use to call the information about patient, doctor, receptionist, medical record as well. For Class (14-17) use for the **Store Data Service** for all information of the user. For class (18) use for the **REGISTER SERVICE** for the new user. For Class(19) use for **Generate ID** for the identification for the primary key of each information class. For class (20-23) Use for **LOGIN SERVICE**. for (24-25) use for running as the main of the whole program.
 _______________________________________________
-1. _[Diagnosis Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/Diagnosis.java)_
+1. _[Diagnosis Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/Diagnosis.java)_: Store the diagnosis of the patient
 
-2. _[Intake Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/Intake.java)_
+2. _[Intake Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/Intake.java)_: Store the intake or usage of the medicine
 
-3. _[Prescription Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/Prescription.java)_
+3. _[Prescription Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/Prescription.java)_: Use to store the type and instruction of the 
+medicine.
+4. _[MedicalRecord Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/MedicalRecord.java)_: work as the store all the main class that store all the information about the medical record that get from the doctor.
 
-4. _[MedicalRecord Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/MedicalRecordEntity/MedicalRecord.java)_
+5. _[PersonInterface](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/meta/PersonInterface.java)_: the class use for call the doctor class called to display the information
 
-5. _[PersonInterface](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/meta/PersonInterface.java)_
+6. _[Address Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/Address.java)_: Store the specific informaation about the address of the user
 
-6. _[Address Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/Address.java)_
+7. _[Doctor Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/Doctor.java)_: Store the spcial information about doctor
 
-7. _[Doctor Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/Doctor.java)_
+8. _[Hospital Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/Hospital.java)_: Store relvent information of the Hospital
 
-8. _[Hospital Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/Hospital.java)_
+9. _[MedicalDate Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/MedicalDate.java)_: A class that classify the date of visit of the user
 
-9. _[MedicalDate Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/MedicalDate.java)_
+10. _[Patient Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/Patient.java)_: store the information of the patient
 
-10. _[Patient Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/Patient.java)_
+11. _[Person Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/Person.java)_: The main class that store the general information about the user 
 
-11. _[Person Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/Person.java)_
+12. _[Receptionist Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/Receptionist.java)_: Store the information of the Receptionist
 
-12. _[Receptionist Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/Receptionist.java)_
-
-13. _[BaseRepoStore Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/repository/BaseRepoStore.java)_
+13. _[BaseRepoStore Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/repository/BaseRepoStore.java)_: storing generic entities with JSON serialization and file persistence.
 
 14. . _[BaseRepository Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/repository/BaseRepository.java)_: An abstract class providing a generic structure for a repository with CRUD operations.
 
-15. _[DoctorRepo Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/repository/DoctorRepo.java)_
+15. _[DoctorRepo Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/repository/DoctorRepo.java)_: For Register the doctor information
 
 16. _[FileRepo Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/repository/FileRepo.java)_: An abstract class representing a file repository for managing data storage in a medical record system.
 
-17. _[FileRepoJSon Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/repository/FileRepoJson.java)_
+17. _[FileRepoJSon Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/repository/FileRepoJson.java)_: A class allow the sub class to use the function
 
-18. _[PersonRepo Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/repository/PersonRepo.java)_
+18. _[PersonRepo Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/repository/PersonRepo.java)_: For register the person information
 
-19. _[DoctorService Class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/services/DoctorService.java)_
+19. _[DoctorService Class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/services/DoctorService.java)_: For the login process of the doctor
 
-20. _[LoginService Class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/services/LoginService.java)_
+20. _[LoginService Class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/services/LoginService.java)_: The main class of the login as the service
 
-21. _[RegisterSevice Class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/services/RegisterService.java)_
+21. _[RegisterSevice Class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/services/RegisterService.java)_: For the login process of the patient
 
-22. _[Cypher Class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/utils/Cypher.java)_
+22. _[Cypher Class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/utils/Cypher.java)_: A method to hashing the password of the user and decrypt it back
 
-23. _[MapUtil Class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/utils/MapUtils.java)_
+23. _[MapUtil Class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/utils/MapUtils.java)_: Use to make the data and to make the sure the data is Synchronize
 
-24. _[PasswordCypher Class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/utils/PasswordCypher.java)_
+24. _[PasswordCypher Class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/utils/PasswordCypher.java)_: Work as the templete of Cypher Class
 
-25. _[UniqueIdGenerator class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/utils/UniqueIdGenerator.java)_
+25. _[UniqueIdGenerator class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/utils/UniqueIdGenerator.java)_: The class use for create the random ID for each user
 
-26. _[UnixTimestampAdapter class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/utils/UnixTimestampAdapter.java)_
+26. _[UnixTimestampAdapter class](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/utils/UnixTimestampAdapter.java)_: Use for support the JSON serialization and deserialization
 
-27.  _[EnumsField](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/validation/EnumsField.java)_
+27.  _[EnumsField](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/validation/EnumsField.java)_: use to validate the information of the user exist or not
 
-28.  _[InputField](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/validation/InputField.java)_
+28.  _[InputField](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/validation/InputField.java)_: The class that determine the that to compare
 
-29.  _[PasswordField](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/validation/PasswordField.java)_
+29.  _[PasswordField](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/validation/PasswordField.java)_: Use for validating the user password
 
-30.  _[StringField](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/validation/StringField.java)_
+30.  _[StringField](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/validation/StringField.java)_: Use for validating the user information
 
-31.  _[App.java](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/App.java)_
+31.  _[App.java](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/App.java)_: Use to run the whole program 
 
-32.  _[CLIFormFetcher](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/CLIFormFetcher.java)_
+32.  _[CLIFormFetcher](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/CLIFormFetcher.java)_: class that provides a framework for fetching and validating user inputs from the command line interface (CLI) 
 
 33. _[appdb.json](https://github.com/lusamreth/simple-medical-record/blob/117d45f45e2463a57226af864227bad39b36a874/appdb.json)_: this is use to store the patient data input
 
