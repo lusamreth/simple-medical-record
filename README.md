@@ -97,14 +97,17 @@ _______________________________________________
 
 32.  _[CLIFormFetcher](https://github.com/lusamreth/simple-medical-record/blob/7fd6b6ccee68092fde7e55556a8dcefb4808e8a6/app/src/main/java/simple/medical/record/CLIFormFetcher.java)_
 
+33. _[appdb.json](https://github.com/lusamreth/simple-medical-record/blob/117d45f45e2463a57226af864227bad39b36a874/appdb.json)_: this is use to store the patient data input
+
+34. _[db.json](https://github.com/lusamreth/simple-medical-record/blob/eb654a03874074caf60d2d23e8d470cc47a3e87e/db.json)_: it is use to store the doctor data input
+
 
 # **Inheritance**
 **Super Class & Sub Class**:
-What: Inheritance is the class"Super Class" that can use by other class"Sub-class"
-Why: It make the code more reusable and fast when there are many similar field of of class. 
-How: Here is where we have impliment it
+Inheritance is the class"Super Class" that can use by other class"Sub-class". It make the code more reusable and fast when there are many similar field of of class that we want to impliment. 
+Here is where we have impliment 4 inheritance class serve differently
 
-- [Person Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/domains/Person.java): all the user has the similar personal information of the user.
+- Person Class: all the user has the similar personal information of the user.
     + We have 3 sub class include: Patint Class, Doctor, Receptionist extends from super class Person
 - [FileRepo Class](https://github.com/lusamreth/simple-medical-record/blob/3510efc7c4bbf7b7e25955cd27c629150172590e/app/src/main/java/simple/medical/record/repository/FileRepo.java): the [FileRepoJson]() use for the customize the reader object from the user input. 
     + We have a sub class [FileRepoJson]() extends from the super class [FileRepo]()
@@ -116,7 +119,7 @@ How: Here is where we have impliment it
 **Constructor**:
 What: The special method use to create object for the class, It is used to initialize the object's state, allocate resources, or perform any other setup tasks.
 Why: The constructor is to ensure that an object is properly initialized when it is instantiated
-How: In our class files, we have include the contructor on nearly every files. []()
+How: In our class files, we have include the contructor on nearly every files. 
 
 
 ### **Overloading Method**
@@ -168,15 +171,42 @@ How: We have use it in many places like:
         }
     ```
 
-
-
-
-
 ### **Override Method**
 
 
+
 # **Polymorphism**
-### **Casting**
+Polymorphism refers to the ability of a single function, method, or operator to work with different types of data or objects.
+
+```java
+    public class PasswordField extends InputField {
+    private String SpecialCases = "@#$%^&+=";
+    private Integer minLen = 8;
+    private Integer maxLen = 24;
+
+        public PasswordField() {
+            super("password");
+
+            this.setFieldError(this.getFieldName() + " is invalid!");
+        }
+
+        public PasswordField(String passname) {
+            super(passname);
+            this.setFieldError(this.getFieldName() + " is invalid!");
+        }
+
+        @Override
+        public boolean Validator() {
+            boolean isValid = false;
+            String inputValue = this.getValue();
+            if (inputValue.length() < minLen) {
+                this.setFieldError("Password must not be below" + minLen + " characters!");
+                return false;
+        ....... 
+```
+look more on this code: [PasswordField](https://github.com/lusamreth/simple-medical-record/blob/eb654a03874074caf60d2d23e8d470cc47a3e87e/app/src/main/java/simple/medical/record/validation/PasswordField.java)
+
+This Validatior file use the method overriding is a specific type of polymorphism where a subclass provides a specific implementation for a method that is already defined in its superclass. It help our system promote the flexibility while it's been using for testing the password in the field. 
 
 
 # **Encapsulation**
@@ -210,6 +240,9 @@ How: We have use it in many places like:
 We utilize a single 'appdb.json' file for both storing and validating user information during authentication. This approach simplifies data management, improves code organization, and enhances readability. Having a unified file as the sole source of truth promotes simplicity, reducing complexity and potential errors. This design choice provides a streamlined solution, ensuring efficient scalability and adaptability to changes in user data.
 
 # **Anonymous inner class**
+An anonymous inner class in Java is a class without a name that's defined and instantiated in a single expression.
+
+```java 
 public void writeJsonFile(Dictionary<String, Object> content) throws IOException {
         Function<String, Boolean> repoWriter = new Function<String, Boolean>() {
             @Override
@@ -222,11 +255,7 @@ public void writeJsonFile(Dictionary<String, Object> content) throws IOException
             }
 
         };
-
-# **functional interface or Lambda Expression**
-
-
-# **Lambda Expression**
-
+```
+This function provides a way to write the contents to a JSON file, using the repoWriter function to handle the writing process. This function benefit us to check the condition when import the data to the json files.
 
 # **Static Method**
