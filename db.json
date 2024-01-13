@@ -1,0 +1,11 @@
+{"Doctor":
+  [
+    {"description":"asd","doctorID":"30d300d7-a02c-4295-a9b1-6c99edc9fe9e","medRecidency":"asdad", "personInfo":
+      {"address":
+        {"district":"aksjdad","province":"asd","street":"asd","village":"asd"},
+        "dateofbirth":60907568400000,"email":"BB@gmail.com","firstname":"aksdjasd","lastname":"aksjd",
+        "password":"$2a$12$wh/yTczgbp4XMsURGiXniezFXeI2L0NKauRrM3eWwC/eq2HNslSoO","phoneNumber":["kasjdasd"],
+        "sex":"M","userId":"5546a8df-1c6d-4df0-b553-679206fe8d13"},
+      "qualification":"aasdkj","specialty":"aksdj"}
+  ]
+}
